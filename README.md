@@ -1,4 +1,4 @@
-# narendasan.com
+# narendasan.com-theme
 
 My Website
 
@@ -22,4 +22,6 @@ zola serve
 zola build
 ```
 
-Actions are included to host on GH Pages and GL Pages (More Info: https://www.getzola.org/documentation/deployment/overview/)
+Host on GH Pages or GL Pages (More Info: https://www.getzola.org/documentation/deployment/overview/)
+
+Use this theme by adding it as a submodule the theme folder of your Zola project (More Info: https://www.getzola.org/documentation/themes/installing-and-using-themes/)
