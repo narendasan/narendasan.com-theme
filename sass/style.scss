@@ -1,0 +1,248 @@
+@import "variables";
+// -------------- THEME SWITCHER -------------- //
+@mixin dark-appearance {
+  filter: invert(1);
+  img {
+    filter: invert(1);
+
+    &.invertable { filter: invert(0); }
+  }
+}
+
+body[theme="dark"] { @include dark-appearance; }
+
+
+@media (prefers-color-scheme: dark) {
+  body[theme="auto"] { @include dark-appearance; }
+}
+// -------------------------------------------- //
+
+// bg color is also needed in html in order to
+// block body's background propagation
+// see: https://stackoverflow.com/a/61265706
+html, body { background: $bg-color; }
+
+html { height: 100%; }
+
+body {
+  color: $text-color;
+  font-family: $body-font;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+  min-height: 100%;
+  overflow-wrap: break-word;
+}
+
+footer {
+  padding-bottom: 25px;
+  background: $bg-color;
+  position:absolute;
+    width:100%;
+    bottom:0px;
+}
+
+.post-meta { text-align: right; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5rem;
+  font-family: $header-font;
+}
+
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: serif;
+
+  &:after {
+    background: #fff;
+    content: '◈';
+    padding: 0 4px;
+    position: relative;
+    top: -13px;
+  }
+}
+
+p { margin: 1rem 0; }
+
+li {
+  margin: 0.4rem 0;
+}
+
+a {
+  margin: 0.4rem 0;
+  color: inherit;
+  font-style: none;
+  font-weight: 600;
+  text-decoration: underline;
+
+  &:visited {
+    color: inherit;
+  }
+
+  &:hover, &:focus {
+    text-decoration: none;
+    color: #949393;
+  }
+}
+
+*:target { background: yellow; }
+
+.w {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+table { width: 100%; }
+
+table, th, td {
+  border: thin solid $separator-color;
+  border-collapse: collapse;
+  padding: 0.4rem;
+}
+
+code {
+  color: $code-text-color;
+  background: $code-bg-color;
+}
+
+pre code {
+  display: block;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  padding: 1rem;
+}
+
+blockquote {
+  font-style: italic;
+  border: thin solid $separator-color;
+  padding: 1rem;
+
+  p { margin: 0; }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.header-nav {
+  border-bottom: 1px solid $separator-color;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.logo-img {
+  max-width: 70%;
+}
+
+.section-separator {
+  max-width: 100%;
+  text-align: center;
+  border: 1px solid $separator-color;
+}
+
+.footnote-definition {
+  padding: 0 1rem;
+  &:target {
+    background: yellow;
+    color: #212121;
+  }
+  p {
+    display: inline;
+  }
+}
+
+.article-list {
+  padding-left: 0;
+
+  li {
+    border-bottom: 1px solid $separator-color;
+    &:last-child {
+      border-bottom: 0;
+    }
+    padding-bottom: 50px;
+  }
+}
+
+.article-list-item {
+  list-style-type: None;
+  margin: 0;
+  padding: 0;
+}
+
+.article-list-footer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  //font-style: italic;
+
+  .article-list-date {
+    text-align: left;
+    padding-right: 5px;
+    font-weight: 200;
+  }
+
+  .article-list-divider {
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 3%;
+  }
+
+  .article-list-tags {
+    padding-left: 5px;
+    max-width: 80%;
+
+    a {
+      white-space: nowrap;
+      font-weight: 700;
+    }
+  }
+}
+
+nav, .taxonomies { text-align: center; }
+nav {
+  a {
+    font-weight: 300;
+  }
+}
+
+.gallery{
+  display:flex;
+  flex-flow: wrap;
+}
+
+.gallery-item{
+  flex-grow: 1;
+  min-width: 250px;
+  background: #eee;
+  border:1px solid #fff;
+  position: relative;
+  margin: 5px;
+}
+
+.gallery-item:before{
+  content: "";
+  padding-top: 100%;
+  display: block;
+}
+
+.gallery-item__image{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

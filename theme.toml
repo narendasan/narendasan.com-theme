@@ -1,0 +1,26 @@
+name = "narendasan.com-theme"
+description = "My Personal Zola Theme"
+license = "NCSA"
+homepage = "https://github.com/narendasan/narendasan.com-theme"
+min_version = "0.4.0"
+demo = ""
+
+[extra]
+header_nav = [
+    { name = "home", url = "/" },
+    { name = "about", url = "/about" },
+    { name = "publications", url = "/pubs" },
+    { name = "directory", url = "/dir" },
+    { name = "blog", url = "/blog"},
+    { name = "photos", url = "/photos" },
+]
+socials = [
+    { name = "twitter", url = "https://twitter.com/" },
+    { name = "github", url = "https://github.com/" },
+    { name = "linkedin", url = "https://linkedin.com/in/" },
+]
+
+# The theme author info: you!
+[author]
+name = "Naren Dasan"
+homepage = "https://narendasan.com"

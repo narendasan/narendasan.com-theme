@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block header %}
+<p><a href=".."><-</a>&ensp; {{ page.slug }}</p>
+<h1>
+Photos
+</h1>
+{% endblock header %}
+
+{% block content %}
+<div class="gallery">
+    {% set photos = load_data(path="content/photos/photos.yml")  %}
+    {% for photo in photos %}
+        <figure class="gallery-item">
+            <a href="{{ photo.path }}">
+                <img src="{{ photo.path }}" alt="" loading="lazy" class="gallery-item__image">
+            </a>
+        </figure>
+    {% endfor %}
+</div>
+{% endblock content %}

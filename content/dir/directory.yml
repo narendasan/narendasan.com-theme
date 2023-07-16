@@ -1,0 +1,15 @@
+last_updated: 06/28/23
+sections:
+  - name: Design
+    sites:
+      - name: 99% Invisible
+        url: https://99percentinvisible.org/
+        rss_feed: http://feeds.99percentinvisible.org/99percentinvisible
+        kind: podcast
+
+  - name: Film & TV
+    sites:
+      - name: Every Frame a Painting
+        url: https://www.youtube.com/user/everyframeapainting
+        rss_feed: https://www.youtube.com/feeds/videos.xml?channel_id=UCjFqcJQXGZ6T6sxyFB-5i6A
+        kind: video

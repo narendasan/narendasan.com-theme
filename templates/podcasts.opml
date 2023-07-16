@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="2.0">
+  <body>
+    <outline text="Naren's Podcasts" title="Naren's Podcasts">
+{% set directory = load_data(path="content/dir/directory.yml")  %}
+{% for sec in directory.sections %}
+  {% for site in sec.sites %}
+    {% if site.rss_feed %}
+      {% if site.kind == "podcast" %}
+      <outline text="{{ site.name }}" title="{{ site.name }}" xmlUrl="{{ site.rss_feed }}" type="rss" />
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+    </outline>
+  </body>
+</opml>

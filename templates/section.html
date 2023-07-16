@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block header %}
+<p><a href="{{ section.path }}.."><-</a>&ensp;{{ section.extra.slug }}</p>
+
+<h1>{{ section.title }}</h1>
+{% endblock header %}
+
+{% block content %}
+{{ section.content | safe }}
+    {% set pages = section.pages %}
+<ul class="article-list">
+    {% for page in pages %}
+    <li class="article-list-item">
+        <a href="{{ page.permalink | safe }}" title="{{ page.title }}">
+            <h3>
+              {{ page.title }}
+              <span class="icon icon-arrow-right"></span>
+            </h3>
+        </a>
+        <p>{{ page.description }}</p>
+        <div class="article-list-footer">
+            <span class="article-list-date">
+                  {{ page.date | date(format="%B %-d, %Y") }}
+            </span>
+            <span class="article-list-divider">-</span>
+            <div class="article-list-tags">
+                {% for tag in page.taxonomies.tags %}
+                    <a href="/tags/{{ tag | slugify }}">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

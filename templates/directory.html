@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block header %}
+<p><a href=".."><-</a>&ensp; {{ page.slug }}</p>
+<h1>
+    My Directory of Cool Places on the Internet
+</h1>
+<h3>
+    A collection of cool sites, blogs, channels and podcasts that I frequent
+</h3>
+{% endblock header %}
+
+{% block content %}
+    {% set directory = load_data(path="content/dir/directory.yml")  %}
+<span> Download as an OPML file to import into an RSS Reader <a href="web-directory-list.opml"> My Web Directory </a> </span>
+<br/>
+<span> Download podcasts as OPML file (for easier importing into a Podcast Player) <a href="podcasts-list.opml"> Podcasts </a> </span>
+<br/>
+<br/>
+<span> Last updated {{ directory.last_updated }} </span>
+<br/>
+
+{% for section in directory.sections %}
+<div class="dir-section">
+<h4>
+    {{ section.name }}
+</h4>
+
+<ul>
+  {% for site in section.sites %}
+  <li>
+    <a href="{{ site.url }}" title="{{ site.name }}">
+      {{ site.name }}
+    </a>
+    {% if site.rss_feed %}
+    <a href="{{ site.rss_feed }}"><span class="icon icon-rss"></span></a>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
+</div>
+<br/>
+
+{% endblock content %}

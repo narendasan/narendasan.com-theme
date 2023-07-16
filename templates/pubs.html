@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block header %}
+<p><a href=".."><-</a>&ensp; {{ page.slug }}</p>
+<h1 id="papers">
+    Papers, Posters and Preprints
+</h1>
+{% endblock header %}
+
+{% block content %}
+<ul class="article-list">
+    {% set publications = load_data(path="content/pubs/publications.yml") %}
+    {% for pub in publications %}
+    <li class="article-list-item">
+        <a href="{{ pub.link }}" title="{{ pub.title }}">
+            <h3>
+              [{{ pub.journal }}] {{ pub.title }}
+              <span class="icon icon-arrow-right"></span>
+            </h3>
+        </a>
+        <p>{{ pub.description }}</p>
+        <div class="article-list-footer">
+            <span class="article-list-date">
+                  {{ pub.date | date(format="%B %-d, %Y") }}
+            </span>
+            <span class="article-list-divider">-</span>
+            <div class="article-list-tags">
+                {% for coauthor in pub.coauthors %}
+                    <a href="{{coauthor.site}}">{{ coauthor.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2 id="talks">Talks</h2>
+
+<ul class="article-list">
+    {% set talks = load_data(path="content/pubs/talks.yml") %}
+    {% for talk in talks %}
+    <li class="article-list-item">
+        <a href="{{ talk.link }}" title="{{ talk.title }}">
+            <h3>
+              [{{ talk.venue }}] {{ talk.title }}
+              <span class="icon icon-arrow-right"></span>
+            </h3>
+        </a>
+        <p>{{ talk.description }}</p>
+        <div class="article-list-footer">
+            <span class="article-list-date">
+                  {{ talk.date | date(format="%B %-d, %Y") }}
+            </span>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}
