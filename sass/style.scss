@@ -20,9 +20,9 @@ body[theme="dark"] { @include dark-appearance; }
 // bg color is also needed in html in order to
 // block body's background propagation
 // see: https://stackoverflow.com/a/61265706
-html, body { background: $bg-color; }
+html, body, footer { background: $bg-color; }
 
-html { height: 100%; }
+html { min-height: 100%; }
 
 body {
   color: $text-color;
@@ -36,10 +36,9 @@ body {
 
 footer {
   padding-bottom: 25px;
-  background: $bg-color;
-  position:absolute;
-    width:100%;
-    bottom:0px;
+  position:relative;
+  width:100%;
+  bottom:0px;
 }
 
 .post-meta { text-align: right; }
